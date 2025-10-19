@@ -1,0 +1,21 @@
+name = "maintenance-mode"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables
+[vars]
+MAINTENANCE_MODE = "false"  # Set to "true" to enable maintenance mode
+# BYPASS_TOKEN = "your-secret-token-here"  # Optional: Set a bypass token
+
+# Production environment configuration
+[env.production]
+main = "worker.js"
+vars = { MAINTENANCE_MODE = "false" }
+routes = [
+  # Configure your routes here - examples:
+  # { pattern = "app.yourdomain.com/*", zone_name = "yourdomain.com" },
+  # { pattern = "api.yourdomain.com/*", zone_name = "yourdomain.com" }
+]
+
+# You can also use secrets for sensitive values (set via wrangler secret put)
+# These should be set using: wrangler secret put BYPASS_TOKEN
